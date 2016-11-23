@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.Context;
 import android.transition.Explode;
 import android.util.Log;
+import android.widget.Toast;
 
 /**
  * An {@link IntentService} subclass for handling asynchronous task requests in
@@ -32,6 +33,7 @@ public class MIntSrv extends IntentService {
             currentTime=System.currentTimeMillis();
 
         }
+
         Log.e("Servicio","Servicio Acabado");
     }
 }

@@ -1,8 +1,12 @@
 package com.example.a5alumno.lab6;
 
 import android.app.Service;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,7 +21,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button startService, startBoundService,startIntentService,displayInfo;
     private EditText editText;
     private static final int BUTTON_REQUEST = 200;
+    private Intent intentBind;
 
+    ServiceConnection mBSrvConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,16 +65,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if(view.getId() == R.id.btnStartService){
             Intent intent = new Intent(this, MSrv.class);
-            startService(intent);
+            this.startService(intent);
         } else if (view.getId() == R.id.btnStartBoundService) {
-//            Intent intent = new Intent(this, MBSrv.class);
-//            startService(intent);
+            this.intentBind= new Intent(this, MBSrv.class);
+            this.startService(intentBind);
+            this.bindService(intentBind, mBSrvConnection, Context.BIND_AUTO_CREATE);
         } else if (view.getId() == R.id.btnStartIntentService){
             Intent intent = new Intent(this, MIntSrv.class);
-            startService(intent);
+            this.startService(intent);
+
         } else if (view.getId() == R.id.btnDispInfo){
-            Log.d("Hola","unclick");
-        }
+            Log.e("Hola","unclick");
+            this.stopService(new Intent(this, MBSrv.class));
+            this.unbindService(mBSrvConnection);
+        } //TODO: Reemplazar por una estructura SWITCH
 
     }
+
+
 }
