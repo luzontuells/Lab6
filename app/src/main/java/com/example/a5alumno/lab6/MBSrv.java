@@ -6,11 +6,21 @@ import android.os.IBinder;
 
 public class MBSrv extends Service {
     public MBSrv() {
+
+    }
+
+    public int onStartCommand(Intent intent, int flags, int startID){
+
+        long currentTime = System.currentTimeMillis();
+        long endTime = currentTime + 2000;
+        while (currentTime<endTime){
+            currentTime=System.currentTimeMillis();
+        }
+        return Service.START_NOT_STICKY;
     }
 
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
         throw new UnsupportedOperationException("Not yet implemented");
     }
 }

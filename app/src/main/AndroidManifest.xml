@@ -26,7 +26,6 @@
             android:exported="true" />
         <service
             android:name=".MIntSrv"
-            android:enabled="true"
             android:exported="false"></service>
     </application>
 

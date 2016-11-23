@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button startService, startBoundService,startIntentService,displayInfo;
     private EditText editText;
+    private static final int BUTTON_REQUEST = 200;
 
 
     @Override
@@ -49,13 +51,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(this, MSrv.class);
             startService(intent);
         } else if (view.getId() == R.id.btnStartBoundService) {
-            Intent intent = new Intent(this, MBSrv.class);
-            startService(intent);
+//            Intent intent = new Intent(this, MBSrv.class);
+//            startService(intent);
         } else if (view.getId() == R.id.btnStartIntentService){
             Intent intent = new Intent(this, MIntSrv.class);
             startService(intent);
         } else if (view.getId() == R.id.btnDispInfo){
-
+            Log.d("Hola","unclick");
         }
 
     }

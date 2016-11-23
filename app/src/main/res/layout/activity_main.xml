@@ -58,18 +58,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/top_btn_text"
-            android:id="@+id/btnStartService" />
+            android:id="@+id/btnStartService"
+            android:textAllCaps="false"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/middle_btn_txt"
-            android:id="@+id/btnStartBoundService" />
+            android:id="@+id/btnStartBoundService"
+            android:textAllCaps="false"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/bottom_btn_txt"
-            android:id="@+id/btnStartIntentService" />
+            android:id="@+id/btnStartIntentService"
+            android:textAllCaps="false"/>
     </LinearLayout>
 </LinearLayout>
